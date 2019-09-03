@@ -137,7 +137,7 @@ echo '</select>';
 
 // Creation de l'objet nommmé Utilisateur
 
- // creation d l'objet utilisateur
+ // creation de la classe)
   class Utilisateur{
 
   
@@ -148,7 +148,7 @@ echo '</select>';
     private $pays;
     
    
-    // methodes
+    // déclaration des methodes
      public function __construct($uid=NULL){
       
        if($uid){
@@ -181,16 +181,20 @@ echo '</select>';
         return false;
         */
          if(!property_exists($this, $propriete)){
-           throw new Exception('La propriété ' . $propriete . ' n\'existe pas ! bitch');
+          throw new Exception('La propriété ' . $propriete . ' n\'existe pas ! bitch');
+
          }
       }  
          
+      //  Etant donné que les propriété definie en haut sont en mode private, pour y acceder, il faut un setter et un getter   
          //affecter vune valeur a une propriete   
       public function set($propriete, $valeur){
       	// $this-> fait refe à la class
       	//$this->: Peut faire reference a la methode comme à la propriete
       	// La propriete de ... ou la class de ...
 
+        // Da cette classe-> on accede aux proprietes
+        // Da cette classe-> on accede aux methodes
         $this->proprietExisteElle($propriete);
         $this->$propriete = $valeur; 
         return $this;
@@ -203,7 +207,12 @@ echo '</select>';
       }
   }
   
+  // Creation d'une variable ($user) à l'extérieur de la classe (objet) Utilisateur pour reutiliser le code
+  // on parle d'instanciation (creation d'un nouvel objet à partir de la classe Utilisateur)
   $user= new Utilisateur(1);
 
+// Afficher la proprieté a l'extérieur de l'objet
+// Dans cet objet, donne moi le nom
   var_dump($user->get('nom')); // Affiche Dia
+
   // var_dump($user->get('nomlll')); // Affiche :  Fatal error: Uncaught Exception: La propriété nomlll n'existe pas ! bitch 
